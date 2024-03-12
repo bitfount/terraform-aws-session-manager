@@ -41,6 +41,10 @@ resource "aws_instance" "default" {
 
   user_data = var.user_data
   tags      = merge({ "Name" = var.name }, var.tags)
+
+  metadata_options {
+    http_tokens   = "required"
+  }
 }
 
 # https://www.terraform.io/docs/providers/aws/r/security_group.html
