@@ -43,7 +43,7 @@ resource "aws_instance" "default" {
   tags      = merge({ "Name" = var.name }, var.tags)
 
   metadata_options {
-    http_tokens   = "required"
+    http_tokens = "required"
   }
 }
 
@@ -70,8 +70,13 @@ locals {
   security_group_name = "${var.name}-session-manager-ec2"
 }
 
+variable "ami_ssm_parameter" {
+  type        = string
+  default     = "/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64"
+  description = "SSM public parameter for the EC2 AMI when var.ami is empty."
+}
 data "aws_ssm_parameter" "aws_ami_default" {
-  name = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
+  name = var.ami_ssm_parameter
 }
 
 # Session Manager IAM Instance Profile
@@ -125,5 +130,5 @@ locals {
 }
 
 data "aws_iam_policy" "default" {
-  arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
+  arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
