@@ -67,7 +67,7 @@ variable "vpc_security_group_ids" {
 }
 
 variable "user_data" {
-  default     = ""
+  default     = null
   type        = string
   description = "The user data to provide when launching the instance."
 }
