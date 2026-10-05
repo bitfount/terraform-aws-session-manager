@@ -100,7 +100,7 @@ module "session_manager" {
 | s3_key_prefix                 | The prefix for the specified S3 bucket.                               | `string`       | `""`                           |    no    |
 | ssm_document_name             | The name of the document.                                             | `string`       | `"SSM-SessionManagerRunShell"` |    no    |
 | tags                          | A mapping of tags to assign to all resources.                         | `map(string)`  | `{}`                           |    no    |
-| user_data                     | The user data to provide when launching the instance.                 | `string`       | `""`                           |    no    |
+| user_data                     | The user data to provide when launching the instance.                 | `string`       | `null`                         |    no    |
 | vpc_security_group_ids        | A list of security group IDs to associate with.                       | `list(string)` | `[]`                           |    no    |
 
 ## Outputs
