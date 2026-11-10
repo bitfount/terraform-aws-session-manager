@@ -45,6 +45,13 @@ resource "aws_instance" "default" {
   metadata_options {
     http_tokens = "required"
   }
+
+  # The default AMI is the latest image from an SSM parameter, so it changes with every
+  # Amazon Linux release. Use it only at launch; patch the instance in place (e.g. SSM
+  # Patch Manager) and replace it on purpose with `terraform apply -replace`.
+  lifecycle {
+    ignore_changes = [ami]
+  }
 }
 
 # https://www.terraform.io/docs/providers/aws/r/security_group.html
