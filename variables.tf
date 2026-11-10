@@ -57,7 +57,7 @@ variable "cloudwatch_encryption_enabled" {
 variable "ami" {
   default     = ""
   type        = string
-  description = "The AMI to use for the instance."
+  description = "The AMI to use when the instance is created. Later changes are ignored; replace the instance to use a new AMI."
 }
 
 variable "vpc_security_group_ids" {

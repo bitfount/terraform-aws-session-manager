@@ -89,7 +89,7 @@ module "session_manager" {
 | name                          | The name of the Session Manager.                                      | `string`       | n/a                            |   yes    |
 | subnet_id                     | The VPC Subnet ID to launch in.                                       | `string`       | n/a                            |   yes    |
 | vpc_id                        | The VPC ID.                                                           | `string`       | n/a                            |   yes    |
-| ami                           | The AMI to use for the instance.                                      | `string`       | `""`                           |    no    |
+| ami                           | The AMI to use when the instance is created. Later changes are ignored; replace the instance to use a new AMI. | `string`       | `""`                           |    no    |
 | cloudwatch_encryption_enabled | Specify true to indicate that encryption for CloudWatch Logs enabled. | `bool`         | `true`                         |    no    |
 | cloudwatch_log_group_name     | The name of the log group.                                            | `string`       | `""`                           |    no    |
 | description                   | The description of the all resources.                                 | `string`       | `"Managed by Terraform"`       |    no    |
